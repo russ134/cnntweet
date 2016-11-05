@@ -1,20 +1,8 @@
-//server.js
+//Primary Node.js server
 
 var express  = require('express');
-var app      = express();								// create our app w/ express
-//var router = express.Router(); 								
-var mongoose = require('mongoose'); 					// mongoose for mongodb
-var port  	 = process.env.PORT || 8080; 				// set the port
-//mongoose.connect('mongodb://localhost/portfolio'); 			// load the database config
-
-//Model
-
-//Test the mongodb connection
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'mongodb connection error'));
-db.once('open', function(callback){
-	console.log('We are in!!! O-o');
-});
+var app      = express();// create our app w/ express
+var port  	 = process.env.PORT || 8080;// set the port
 
 var morgan = require('morgan'); // log requests to the console (express4)
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)

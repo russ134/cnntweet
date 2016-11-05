@@ -1,13 +1,39 @@
 <!DOCTYPE html>
-
+<html lang="en" ng-app="TweetApp">
 	<head>
 	  <title>CNN Digital - Twitter Feed Demo</title>
 	    <meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   		<meta name="viewport" content="width=device-width, initial-scale=1" />
+  		<link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.css">
+  		<link rel="stylesheet" type="text/css" href="resources/css/app.css">
 	</head>
 
-	<body>
-		<div>Hello</div>
+	<body ng-cloak>
+		<div id="wrapper" layout="column">
+			<app-header class="app-header" flex></app-header>
+			<div id="fcontent" class="feed-content" flex><section>{{hi}}</section>
+				</div>
+			<app-footer class="app-footer" flex></app-footer>
+		</div>
+
+
+		<!--Angular-->
+		<script src="node_modules/angular/angular.js"></script>
+		<script src="node_modules/angular-route/angular-route.js"></script>
+		<script src="node_modules/angular-animate/angular-animate.js"></script>
+		<script src="node_modules/angular-aria/angular-aria.js"></script>
+		<script src="node_modules/angular-material/angular-material.js"></script>
+
+		<!--Main App-->
+		<script src="app.js"></script>
+
+		<!--Controllers-->
+		<script src="public/components/feed-content/controllers/feed-controller.js"></script>
+		<!--Directives-->
+		<script src="public/components/header/directives/app-header.js"></script>
+		<script src="public/components/footer/directives/app-footer.js"></script>
+		<!--Services-->
 	</body>
+
 </html>
