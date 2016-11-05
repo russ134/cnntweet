@@ -3,7 +3,9 @@
 
 var app = angular.module('TweetApp', [
   'ngRoute',
-  'ngMaterial']);
+  'ngMaterial',
+  'ngResource',
+  'ngSanitize']);
 
 
 app.config(function($logProvider){

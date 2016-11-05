@@ -1,8 +1,10 @@
 //Primary Node.js server
 
 var express  = require('express');
+var tweets = require('./routes/tweets');//Twitter routes
 var app      = express();// create our app w/ express
 var port  	 = process.env.PORT || 8080;// set the port
+
 
 var morgan = require('morgan'); // log requests to the console (express4)
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
@@ -16,6 +18,8 @@ app.use(bodyParser.json());                                     // parse applica
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
 app.use(express.static('.')); //load all static files or files bootstrapped in file directory
+
+app.use('/tweets', tweets);
 
 // serve up the application -------------------------------------------------------------
 app.get('/', function(req, res) {
