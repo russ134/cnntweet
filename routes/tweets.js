@@ -6,14 +6,12 @@ var config = require('../config');
 // instantiate Twit module
 var twitter = new Twit(config.twitter);
 
-var TWEET_COUNT = 15;
+var TWEET_COUNT = 30;
 var MAX_WIDTH = 305;
 var OEMBED_URL = 'statuses/oembed';
 var USER_TIMELINE_URL = 'statuses/user_timeline';
 
-/**
- * GET tweets json.
- */
+//Return JSON array of tweets
 router.get('/user_timeline/:user', function(req, res) {
 
   var oEmbedTweets = [], tweets = [],
@@ -41,9 +39,7 @@ router.get('/user_timeline/:user', function(req, res) {
     }
   });
 
-  /**
-   * requests the oEmbed html
-   */
+
   function getOEmbed (tweet) {
 
     // oEmbed request params

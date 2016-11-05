@@ -2,6 +2,10 @@
 
 app.controller('FeedController', ['$scope', '$resource', '$timeout', function ($scope, $resource, $timeout){
 		
+
+    //For loading
+    $scope.loaded = true;
+
 	//Feed initialization
     function startup() {
 
@@ -27,6 +31,7 @@ app.controller('FeedController', ['$scope', '$resource', '$timeout', function ($
 
       $scope.getTweets();
     }
+
 
 	//Retrieve Tweets
     function getTweets (paging) {
@@ -60,6 +65,7 @@ app.controller('FeedController', ['$scope', '$resource', '$timeout', function ($
         // render tweets with widgets.js
         $timeout(function () {
           twttr.widgets.load();
+          $scope.loaded = true;
         }, 30);
       });
     }

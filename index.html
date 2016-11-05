@@ -6,64 +6,61 @@
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
   		<meta name="viewport" content="width=device-width, initial-scale=1" />
   		<link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.css">
+  		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
   		<link rel="stylesheet" type="text/css" href="resources/css/app.css">
 	</head>
 
 	<body ng-cloak>
-		<div id="wrapper" layout="column">
+		<div id="wrapper" ng-controller="FeedController" >
 			<app-header class="app-header" flex></app-header>
-			<div id="fcontent" class="feed-content" ng-controller="FeedController" flex>
-				<div id="processtweet">
+			<div id="fcontent" class="feed-content" flex>
+				
+				<!--Get Tweets from Specific Handle-->
+				<div id="processtweet" layout="row" layout-align="center center" class="md-inline-form">
 					<form ng-submit="getTweets()">
-						<span>@</span>
-					  <input type="text" class="form-control" placeholder="TwitterDev" ng-model="username">
-					  <span></span>
-			        <button class="btn btn-default" type="submit">Get Tweets</button>
-					</form>
+					<md-content layout-gt-sm="row" layout-padding>
+					<md-input-container>
+					<input type="text" class="form-control" ng-model="username">
+				        <md-button class="btn btn-default md-raised" type="submit">Get Tweets</md-button>
+				       </md-input-container>
+				     </md-content>
+						</form>
 				</div>
-				<div id="tweet-list">
-		    		<!-- this div will repeat for every tweet object in the array using a template-expanding directive -->
-		    		<div ng-repeat="tweet in tweetsResult" class="tweet-item">
+				
 
-		    			<!-- sanitized HTML binding -->
-							<div ng-bind-html="tweet.oEmbed.html"></div>
+				<!--Tweets-->
+				<div id="tweet-list" >
+		    		<div ng-repeat="tweet in tweetsResult" class="tweet-item" layout="row" layout-align="center center" flex>
+			    			<!-- sanitized HTML binding -->
+								<div ng-bind-html="tweet.oEmbed.html"></div>
+								<!-- binding to Tweet source property -->
+								<div class="tweet-details">Tweeted from <span ng-bind-html="tweet.source"></span>
 
-							<!-- binding to Tweet source property -->
-							<div class="tweet-details">
-								Tweeted from <span ng-bind-html="tweet.source"></span>
-
-								<!-- play around with rendering different Tweet properties -->
-								<!-- <p>{{tweet.user.screen_name}}</p> -->
-								<!-- <p>{{tweet.text}}</p> -->
-							</div>
+									<!-- play around with rendering different Tweet properties -->
+									<!-- <p>{{tweet.user.screen_name}}</p> -->
+									<!-- <p>{{tweet.text}}</p> -->
+								</div>
 		    		</div>
 				</div>
 			</div>
 
-			<div id="getmore">
-				<!-- this button will trigger the getMoreTweets function in the javascript controller -->
-		  	<button type="button" class="load-more-btn btn btn-default" ng-click="getMoreTweets()">Get More Tweets</button>
 
-
-			</div>
 
 			<app-footer class="app-footer" flex></app-footer>
 		</div>
 
 		<!--Leverage Twitter Platform Widgets-->
-		<script src="//platform.twitter.com/widgets.js"></script>
+		<script src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 		<!--Angular-->
 		<script src="node_modules/angular/angular.js"></script>
 		<script src="node_modules/angular-route/angular-route.js"></script>
-		<!--<script src"node_modules/angular-resource/angular-resource.js"></script>-->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular-resource.min.js"></script>
-		<!--<script src"node_modules/angular-sanitize/angular-sanitize.js"></script>-->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.18/angular-sanitize.min.js"></script>
 		<script src="node_modules/angular-animate/angular-animate.js"></script>
 		<script src="node_modules/angular-aria/angular-aria.js"></script>
 		<script src="node_modules/angular-material/angular-material.js"></script>
-			<script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.1.5/masonry.pkgd.min.js"></script>
 
 		<!--Main App-->
 		<script src="app.js"></script>
