@@ -40,3 +40,5 @@ npm start
 ```
 
 Finally go to [http://localhost:8080](http://localhost:8080) in your browser
+
+Special Note: Continous GET requests against the Twitter API will create a limit error, resulting in the app needing to be reloaded after an certain time period of 5 minutes or so.

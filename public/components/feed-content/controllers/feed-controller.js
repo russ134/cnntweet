@@ -10,7 +10,7 @@ app.controller('FeedController', ['$scope', '$resource', '$timeout', function ($
     function startup() {
 
       // set a default username value
-      $scope.username = "RussTerrell";
+      $scope.username = "cnn";
       
       // empty tweet model
       $scope.tweetsResult = [];

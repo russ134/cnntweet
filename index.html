@@ -8,6 +8,7 @@
   		<link rel="stylesheet" type="text/css" href="node_modules/angular-material/angular-material.css">
   		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
   		<link rel="stylesheet" type="text/css" href="resources/css/app.css">
+  		<link rel='icon' type='resources/img/Twitter_logo_white.png' href="resources/img/Twitter_logo_white.png" />
 	</head>
 
 	<body ng-cloak>
@@ -16,36 +17,28 @@
 			<div id="fcontent" class="feed-content" flex>
 				
 				<!--Get Tweets from Specific Handle-->
-				<div id="processtweet" layout="row" layout-align="center center" class="md-inline-form">
-					<form ng-submit="getTweets()">
-					<md-content layout-gt-sm="row" layout-padding>
-					<md-input-container>
+				<div id="processtweet" layout="column" layout-align="center center" class="md-inline-form">
+					<md-input-container><label>@Handle ID</label>
 					<input type="text" class="form-control" ng-model="username">
-				        <md-button class="btn btn-default md-raised" type="submit">Get Tweets</md-button>
+				        <md-button id="gtwit" class="btn btn-default md-raised md-primary" type="submit" ng-click="getTweets()" layout-align="center center">Get Tweets</md-button>
 				       </md-input-container>
-				     </md-content>
-						</form>
 				</div>
 				
 
 				<!--Tweets-->
-				<div id="tweet-list" >
-		    		<div ng-repeat="tweet in tweetsResult" class="tweet-item" layout="row" layout-align="center center" flex>
-			    			<!-- sanitized HTML binding -->
-								<div ng-bind-html="tweet.oEmbed.html"></div>
-								<!-- binding to Tweet source property -->
-								<div class="tweet-details">Tweeted from <span ng-bind-html="tweet.source"></span>
-
-									<!-- play around with rendering different Tweet properties -->
-									<!-- <p>{{tweet.user.screen_name}}</p> -->
-									<!-- <p>{{tweet.text}}</p> -->
-								</div>
-		    		</div>
+				<div id="tweet-list" layout-align="center center" flex>
+					<md-list>
+					  <md-list-item class="md-2-line" ng-repeat="tweet in tweetsResult">
+						<div ng-bind-html="tweet.oEmbed.html"></div></br>
+					    	<div class="md-list-item-text">Tweeted from <span ng-bind-html="tweet.source"></span>
+					    </div>
+					  </md-list-item>
+					</md-list>
 				</div>
 			</div>
-
-
-
+				<div id="getmore">
+			  		<md-button type="button" class="load-more-btn md-raised md-primary" ng-click="getMoreTweets()">Load More</md-button>
+				</div>
 			<app-footer class="app-footer" flex></app-footer>
 		</div>
 
@@ -70,7 +63,7 @@
 		<!--Directives-->
 		<script src="public/components/header/directives/app-header.js"></script>
 		<script src="public/components/footer/directives/app-footer.js"></script>
-		<!--Services-->
+
 	</body>
 
 </html>

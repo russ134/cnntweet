@@ -12,10 +12,9 @@ app.config(function($logProvider){
     $logProvider.debugEnabled(true);
 });
 
-  //Custom theming
+  //Optional Material Design Custom theming
   /*$mdThemingProvider.theme('default')
-  .primaryPalette('blue-grey')
+  .primaryPalette('orange',{
+    'hue-3': '600'
+  })
   .accentPalette('red');*/
-
-
-//}]);
